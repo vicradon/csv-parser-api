@@ -1,30 +1,55 @@
-# hello-express
+# Osinachi Chukwujama Take Home Documentation
+This is a web service which converts CSV to JSON and returns the required JSON fields. 
+It comes with this documentation and unit tests using Jest and supertest.
 
-A server that serves a webpage, its resources, and some data
+## Routes
+1. `POST /`
 
+### `POST /`
+#### Parameters
+1. csv: required (JSON object)
+    1. url: required (string)
+    2. select_fields: optional (string[])
 
-## Your Project
+#### Example request body
+  
+  ```json
+    {
+      "csv":{
+        "url": "https://linktocsv",
+        "select_fields": ["First Name", "Last Name", "Age"],
+      }
+    }
+  ```
+  
+#### Example response object
+    
+    ```json
+    {
+      "conversion_key": "ZEMAHBb54vkFXPHA9jHY6Xp3gMnMAKYg",
+      "json": [
+        {
+          "First Name":"Ade",
+          "Last Name":"Stark",
+          "Age": 21 
+        },
+        {
+          "First Name":"Ade",
+          "Last Name":"Stark",
+          "Age": 21 
+        }
+      ]
+    }
+    ```
+    
+## Running tests
+To run tests, run this command
+```bash
+npm test
+```
+## Test suites covered
+1. Testing the Post endpoint
 
-On the front-end,
-
-- Edit `views/index.html` to change the content of the webpage
-- `public/client.js` is the javacript that runs when you load the webpage
-- `public/style.css` is the styles for `views/index.html`
-- Drag in `assets`, like images or music, to add them to your project
-
-On the back-end,
-
-- your app starts at `server.js`
-- add frameworks and packages in `package.json`
-- safely store app secrets in `.env` (nobody can see this but you and people you invite)
-
-Click `Show` in the header to see your app live. Updates to your code will instantly deploy.
-
-
-## Made by [Glitch](https://glitch.com/)
-
-**Glitch** is the friendly community where you'll build the app of your dreams. Glitch lets you instantly create, remix, edit, and host an app, bot or site, and you can invite collaborators or helpers to simultaneously edit code with you.
-
-Find out more [about Glitch](https://glitch.com/about).
-
-( ᵔ ᴥ ᵔ )
+### Testing the Post endpoint
+1. Testing that it returns the correct status code
+2. Testing that the returned JSON is of the required schema
