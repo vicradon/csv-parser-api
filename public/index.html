@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Osinachi Chukwujama Take Home</title>
+</head>
+<body>
+  <h1>Documentation</h1>
+  <p>This is a web service which converts CSV to JSON and returns the required JSON fields.</p>
+
+  <h2>Routes</h2>
+  <ol>
+    <li>POST /</li>
+  </ol>
+  <h3>POST /</h3>
+  <h4>Parameters</h4>
+  <ol>
+    <li>csv: required (JSON object)</li>
+    <ol>
+      <li>url: required (string)</li>
+      <li>select_fields: optional (string[])</li>
+    </ol>
+  </ol>
+  <h4>Example request body</h4>
+  <code>
+    <pre>
+    {
+      "csv":{
+        "url": "https://linktocsv",
+        "select_fields": ["First Name", "Last Name", "Age"],
+      }
+    }
+    </pre>
+  </code>
+  <h4>Example response object</h4>
+    <code>
+    <pre>
+    {
+      "conversion_key": "ZEMAHBb54vkFXPHA9jHY6Xp3gMnMAKYg",
+      "json": [
+        {
+          "First Name":"Ade",
+          "Last Name":"Stark",
+          "Age": 21 
+        },
+        {
+          "First Name":"Ade",
+          "Last Name":"Stark",
+          "Age": 21 
+        }
+      ]
+    }
+    </pre>
+  </code>
+</body>
+</html>
